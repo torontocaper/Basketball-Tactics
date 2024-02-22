@@ -2,7 +2,7 @@ extends Node
 
 @onready var players = $Players.get_children()
 
-var round_number := 0
+var round_number := 1
 
 signal your_turn(player)
 

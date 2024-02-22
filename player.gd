@@ -2,31 +2,34 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var player_camera = $PlayerCamera
-@onready var player_sprite = $PlayerSprite
-@onready var player_ui = $PlayerUI
-@onready var name_label = $PlayerUI/CenterContainer/VBoxContainer/NameLabel
-@onready var movement_buttons = $PlayerUI/CenterContainer/VBoxContainer/MovementButtons
+@onready var player_camera := $PlayerCamera
+@onready var player_sprite := $PlayerSprite
+@onready var player_ui := $PlayerUI
+@onready var name_label := $PlayerUI/CenterContainer/VBoxContainer/NameLabel
+@onready var movement_buttons_node := $PlayerUI/CenterContainer/VBoxContainer/MovementButtons
 
 @export var character_name : String = "Blorb"
-@export var movement_speed = 3
+@export var movement_speed := 3
 
 var tile_size := Vector2i(16, 16)
 var is_turn := false
 var movement_cost : float
-var movement_remaining = movement_speed
+var movement_remaining = float(movement_speed)
+var movement_buttons_group : ButtonGroup
+var movement_vector : Vector2i
+var button_name : String
 
 signal turn_finished
 
 func _ready():
-	name_label.text = character_name
-	movement_buttons = movement_buttons.get_child(0).button_group
-	movement_buttons.pressed.connect(_on_button_group_pressed)
+	name_label.text = character_name.to_upper()
+	player_ui.visible = false
+	movement_buttons_group = movement_buttons_node.get_child(0).button_group
+	movement_buttons_group.pressed.connect(_on_movement_button_pressed)
 
 func _execute_turn(player):
 	if player == self:
 		is_turn = true
-		print("it's " + character_name + "'s turn")
 		if player_camera.is_current() == false:
 			player_camera.make_current()
 		player_sprite.play("idle")
@@ -41,10 +44,8 @@ func _on_end_turn_button_pressed():
 	movement_remaining = movement_speed
 	is_turn = false
 
-func _on_button_group_pressed(button):
-	var button_name = button.name 
-	print(str(button_name) + " pressed")
-	var movement_vector : Vector2i
+func _on_movement_button_pressed(button):
+	button_name = button.name 
 	if button_name == "Up":
 		movement_vector = Vector2i.UP * tile_size
 	if button_name == "Left":

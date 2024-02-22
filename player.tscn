@@ -90,7 +90,6 @@ shape = SubResource("RectangleShape2D_v82rd")
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="PlayerUI"]
 anchors_preset = 15
@@ -105,7 +104,6 @@ layout_mode = 2
 [node name="NameLabel" type="Label" parent="PlayerUI/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_8uemq")
 text = "Name"
@@ -202,28 +200,6 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 icon = ExtResource("7_07l2c")
 expand_icon = true
-
-[node name="ActionButtons" type="HBoxContainer" parent="PlayerUI/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Button" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/ActionButtons"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button2" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/ActionButtons"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button3" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/ActionButtons"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="EndTurnButton" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer"]
 layout_mode = 2
