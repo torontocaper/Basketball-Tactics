@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://diuo7kqv0cxgp"]
+
+[ext_resource type="Texture2D" uid="uid://cala77ckbtbry" path="res://assets/sprites/alien-1.png" id="1_a63tt"]
+[ext_resource type="Script" path="res://spares/player_old.gd" id="2_pbhd2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17eof"]
+atlas = ExtResource("1_a63tt")
+region = Rect2(0, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y81lk"]
+atlas = ExtResource("1_a63tt")
+region = Rect2(16, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o3cb"]
+atlas = ExtResource("1_a63tt")
+region = Rect2(32, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8b7f"]
+atlas = ExtResource("1_a63tt")
+region = Rect2(48, 24, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scg06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17eof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y81lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o3cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8b7f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qjmv"]
+size = Vector2(10, 19)
+
+[node name="Player" type="AnimatedSprite2D"]
+z_index = 1
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_scg06")
+animation = &"idle"
+frame_progress = 0.966239
+script = ExtResource("2_pbhd2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_7qjmv")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://leos16bh8n1h"]
+
+[ext_resource type="Script" path="res://draw_polygons.gd" id="1_t04q1"]
+
+[node name="DrawPolygons" type="Node2D"]
+script = ExtResource("1_t04q1")
+cell_size = null
+grid_size = null

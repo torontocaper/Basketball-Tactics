@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv3stm76icqoy"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_liywd"]
+[ext_resource type="PackedScene" uid="uid://bxfcxqwlfbd8c" path="res://court_flat.tscn" id="2_6ahfd"]
+[ext_resource type="Script" path="res://turn_manager.gd" id="2_dljt0"]
+[ext_resource type="PackedScene" uid="uid://dkqg27dvam7ky" path="res://player.tscn" id="3_0eco0"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_liywd")
+
+[node name="TurnManager" type="Node" parent="."]
+script = ExtResource("2_dljt0")
+
+[node name="Players" type="Node" parent="TurnManager"]
+
+[node name="Player" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(104, 80)
+character_name = "Blurb"
+
+[node name="Player2" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
+modulate = Color(1, 0.647059, 0, 1)
+position = Vector2(88, 32)
+character_name = "Orang"
+
+[node name="Player3" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
+modulate = Color(0.627451, 0.12549, 0.941176, 1)
+position = Vector2(56, 64)
+character_name = "Purp"
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Court" parent="Environment" instance=ExtResource("2_6ahfd")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DebugInfo" type="HBoxContainer" parent="UI"]
+offset_right = 40.0
+
+[node name="Labels" type="VBoxContainer" parent="UI/DebugInfo"]
+layout_mode = 2
+
+[node name="Values" type="VBoxContainer" parent="UI/DebugInfo"]
+layout_mode = 2
