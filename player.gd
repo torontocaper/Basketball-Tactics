@@ -69,7 +69,21 @@ func _on_movement_button_pressed(button):
 		movement_cost = 1
 	
 	if movement_remaining >= movement_cost:
-		translate(movement_vector)
+		_move()
 		movement_remaining -= movement_cost
 	else:
 		print("not enough movement points left")
+		
+func _physics_process(_delta):
+	# set velocity to movement vector
+	velocity = movement_vector
+	# but only for as long as it takes to get to the destination, then stop
+	move_and_slide()
+
+func _move():
+	set_physics_process(true)
+	player_sprite.play("run")
+	await get_tree().create_timer(1.0).timeout
+	set_physics_process(false)
+	player_sprite.play("idle")
+	
