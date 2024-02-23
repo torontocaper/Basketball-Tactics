@@ -5,6 +5,7 @@ extends Node
 var round_number := 1
 
 signal your_turn(player)
+signal round_over(round_number)
 
 func _ready():
 	players.shuffle()
@@ -18,6 +19,7 @@ func _execute_round():
 		print("sending 'your turn' signal to " + player.character_name)
 		your_turn.emit(player)
 		await player.turn_finished
+	round_over.emit(round_number)
 	round_number += 1
 	_execute_round()
 
