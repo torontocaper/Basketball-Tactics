@@ -16,7 +16,6 @@ var is_turn := false
 var movement_cost : float
 var movement_remaining = float(movement_speed)
 var movement_button_group : ButtonGroup
-var movement_vector : Vector2i
 var button_name : String
 
 signal turn_finished
@@ -45,6 +44,7 @@ func _on_end_turn_button_pressed():
 	is_turn = false
 
 func _on_movement_button_pressed(button):
+	var movement_vector : Vector2i
 	button_name = button.name 
 	if button_name == "Up":
 		movement_vector = Vector2i.UP * tile_size
@@ -69,18 +69,14 @@ func _on_movement_button_pressed(button):
 		movement_cost = 1
 
 	if movement_remaining >= movement_cost:
-		_move()
+		_move(movement_vector)
 		movement_remaining -= movement_cost
 	else:
 		print("not enough movement points left")
 
-func _physics_process(_delta):
-	velocity = movement_vector
-	move_and_slide()
-
-func _move():
+func _move(movement_vector):
 	player_sprite.play("run")
-	set_physics_process(true)
+	var tween = create_tween()
+	tween.tween_property(self, "position", position + Vector2(movement_vector), 1.0)
 	await get_tree().create_timer(1.0).timeout
-	set_physics_process(false)
 	player_sprite.play("idle")
