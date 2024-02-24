@@ -75,8 +75,10 @@ func _on_movement_button_pressed(button):
 		print("not enough movement points left")
 
 func _move(movement_vector):
+	player_ui.set_process_mode(Node.PROCESS_MODE_DISABLED)
 	player_sprite.play("run")
 	var tween = create_tween()
 	tween.tween_property(self, "position", position + Vector2(movement_vector), 1.0)
 	await get_tree().create_timer(1.0).timeout
 	player_sprite.play("idle")
+	player_ui.set_process_mode(Node.PROCESS_MODE_INHERIT)
