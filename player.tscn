@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dkqg27dvam7ky"]
+[gd_scene load_steps=25 format=3 uid="uid://dkqg27dvam7ky"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_beihu"]
 [ext_resource type="Texture2D" uid="uid://cala77ckbtbry" path="res://assets/sprites/alien-1.png" id="1_gevm3"]
@@ -80,6 +80,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v82rd"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnp1e"]
+size = Vector2(48, 48)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uemq"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 0.776471)
 corner_radius_top_left = 2
@@ -114,14 +117,20 @@ script = ExtResource("1_beihu")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 10
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_cpeot")
-animation = &"run"
+animation = &"idle"
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_v82rd")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+
+[node name="InfluenceArea" type="Area2D" parent="."]
+
+[node name="InfluenceShape" type="CollisionShape2D" parent="InfluenceArea"]
+shape = SubResource("RectangleShape2D_dnp1e")
+debug_color = Color(1, 0.752941, 0.796078, 0.419608)
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 

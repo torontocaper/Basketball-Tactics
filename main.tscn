@@ -15,18 +15,18 @@ script = ExtResource("2_dljt0")
 
 [node name="Player" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
 modulate = Color(0, 0, 1, 1)
-position = Vector2(104, 80)
+position = Vector2(40, 56)
 character_name = "Blurb"
 movement_speed = 6
 
 [node name="Player2" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
 modulate = Color(1, 0.647059, 0, 1)
-position = Vector2(88, 32)
+position = Vector2(56, 8)
 character_name = "Orang"
 
 [node name="Player3" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
 modulate = Color(0.627451, 0.12549, 0.941176, 1)
-position = Vector2(56, 64)
+position = Vector2(8, 8)
 character_name = "Purp"
 
 [node name="Environment" type="Node" parent="."]
