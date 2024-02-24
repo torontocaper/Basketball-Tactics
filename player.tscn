@@ -78,7 +78,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v82rd"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnp1e"]
 size = Vector2(48, 48)
@@ -181,6 +181,7 @@ shape = SubResource("RectangleShape2D_v82rd")
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
 [node name="InfluenceArea" type="Area2D" parent="."]
+monitorable = false
 
 [node name="InfluenceShape" type="CollisionShape2D" parent="InfluenceArea"]
 shape = SubResource("RectangleShape2D_dnp1e")
@@ -221,6 +222,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_i3ncs")
+shortcut_in_tooltip = false
 icon = ExtResource("3_5fqpb")
 expand_icon = true
 
@@ -232,6 +234,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_3wea7")
+shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_lytlw")
 expand_icon = true
 
@@ -243,6 +246,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_ya4ye")
+shortcut_in_tooltip = false
 icon = ExtResource("5_ynwde")
 expand_icon = true
 
@@ -254,6 +258,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_8k2ub")
+shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_ifb7r")
 expand_icon = true
 
@@ -270,6 +275,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_sys6w")
+shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_r3cyp")
 expand_icon = true
 
@@ -281,6 +287,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_l5ktn")
+shortcut_in_tooltip = false
 icon = ExtResource("6_40i15")
 expand_icon = true
 
@@ -292,6 +299,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_l0d6m")
+shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_q1g0f")
 expand_icon = true
 
@@ -303,6 +311,7 @@ size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
 shortcut = SubResource("Shortcut_a8hv4")
+shortcut_in_tooltip = false
 icon = ExtResource("7_07l2c")
 expand_icon = true
 

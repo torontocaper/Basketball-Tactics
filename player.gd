@@ -7,6 +7,7 @@ class_name Player
 @onready var player_ui := $PlayerUI
 @onready var name_label := $PlayerUI/CenterContainer/VBoxContainer/NameLabel
 @onready var movement_buttons_node := $PlayerUI/CenterContainer/VBoxContainer/MovementButtons
+@onready var influence_area = $InfluenceArea
 
 @export var character_name : String = "Blorb"
 @export var movement_speed := 3
@@ -25,6 +26,8 @@ func _ready():
 	player_ui.visible = false
 	movement_button_group = movement_buttons_node.get_child(0).button_group
 	movement_button_group.pressed.connect(_on_movement_button_pressed)
+	influence_area.body_entered.connect(_on_influence_area_entered)
+	influence_area.body_exited.connect(_on_influence_area_exited)
 
 func _execute_turn(player):
 	if player == self:
@@ -82,3 +85,12 @@ func _move(movement_vector):
 	await get_tree().create_timer(1.0).timeout
 	player_sprite.play("idle")
 	player_ui.set_process_mode(Node.PROCESS_MODE_INHERIT)
+
+func _on_influence_area_entered(body):
+	if body == self:
+		pass
+	else:
+		print(body.character_name + " has entered " + character_name + "'s influence area!")
+
+func _on_influence_area_exited(body):
+	print(body.character_name + " has left " + character_name + "'s influence area!")
