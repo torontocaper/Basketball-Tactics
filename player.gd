@@ -11,6 +11,7 @@ class_name Player
 
 @export var character_name : String = "Blorb"
 @export var movement_speed := 3
+@export var is_cpu : bool = false
 
 var tile_size := Vector2i(16, 16)
 var is_turn := false
@@ -24,10 +25,15 @@ signal turn_finished
 func _ready():
 	name_label.text = character_name.to_upper()
 	player_ui.visible = false
-	movement_button_group = movement_buttons_node.get_child(0).button_group
-	movement_button_group.pressed.connect(_on_movement_button_pressed)
 	influence_area.body_entered.connect(_on_influence_area_entered)
 	influence_area.body_exited.connect(_on_influence_area_exited)
+
+	if is_cpu:
+		# activate player brain
+		pass
+	else:
+		movement_button_group = movement_buttons_node.get_child(0).button_group
+		movement_button_group.pressed.connect(_on_movement_button_pressed)
 
 func _execute_turn(player):
 	if player == self:
@@ -36,7 +42,8 @@ func _execute_turn(player):
 		if player_camera.is_current() == false:
 			player_camera.make_current()
 		player_sprite.play("idle")
-		player_ui.visible = true
+		if is_cpu == false:
+			player_ui.visible = true
 	else:
 		is_turn = false
 
