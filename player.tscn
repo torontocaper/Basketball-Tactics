@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dkqg27dvam7ky"]
+[gd_scene load_steps=43 format=3 uid="uid://dkqg27dvam7ky"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_beihu"]
 [ext_resource type="Texture2D" uid="uid://cala77ckbtbry" path="res://assets/sprites/alien-1.png" id="1_gevm3"]
@@ -93,21 +93,75 @@ corner_radius_bottom_left = 2
 [sub_resource type="ButtonGroup" id="ButtonGroup_xvr2r"]
 resource_name = "Movement"
 
+[sub_resource type="InputEventAction" id="InputEventAction_4s8wk"]
+action = &"up-left"
+
+[sub_resource type="Shortcut" id="Shortcut_i3ncs"]
+events = [SubResource("InputEventAction_4s8wk")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_r6r0k"]
+action = &"up"
+
+[sub_resource type="Shortcut" id="Shortcut_3wea7"]
+events = [SubResource("InputEventAction_r6r0k")]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lytlw"]
 atlas = ExtResource("4_gwgws")
 region = Rect2(476, 357, 16, 16)
+
+[sub_resource type="InputEventAction" id="InputEventAction_3gwur"]
+action = &"up-right"
+
+[sub_resource type="Shortcut" id="Shortcut_ya4ye"]
+events = [SubResource("InputEventAction_3gwur")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_hxxq3"]
+action = &"left"
+
+[sub_resource type="Shortcut" id="Shortcut_8k2ub"]
+events = [SubResource("InputEventAction_hxxq3")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifb7r"]
 atlas = ExtResource("4_gwgws")
 region = Rect2(527, 357, 16, 16)
 
+[sub_resource type="InputEventAction" id="InputEventAction_owkrt"]
+action = &"right"
+
+[sub_resource type="Shortcut" id="Shortcut_sys6w"]
+events = [SubResource("InputEventAction_owkrt")]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3cyp"]
 atlas = ExtResource("4_gwgws")
 region = Rect2(493, 357, 16, 16)
 
+[sub_resource type="InputEventAction" id="InputEventAction_xs85x"]
+action = &"down-left"
+
+[sub_resource type="Shortcut" id="Shortcut_l5ktn"]
+events = [SubResource("InputEventAction_xs85x")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_v0m24"]
+action = &"down"
+
+[sub_resource type="Shortcut" id="Shortcut_l0d6m"]
+events = [SubResource("InputEventAction_v0m24")]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1g0f"]
 atlas = ExtResource("4_gwgws")
 region = Rect2(510, 357, 16, 16)
+
+[sub_resource type="InputEventAction" id="InputEventAction_jlhsu"]
+action = &"down-right"
+
+[sub_resource type="Shortcut" id="Shortcut_a8hv4"]
+events = [SubResource("InputEventAction_jlhsu")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_pmg1x"]
+action = &"ui_accept"
+
+[sub_resource type="Shortcut" id="Shortcut_435ub"]
+events = [SubResource("InputEventAction_pmg1x")]
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -166,6 +220,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_i3ncs")
 icon = ExtResource("3_5fqpb")
 expand_icon = true
 
@@ -176,6 +231,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_3wea7")
 icon = SubResource("AtlasTexture_lytlw")
 expand_icon = true
 
@@ -186,6 +242,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_ya4ye")
 icon = ExtResource("5_ynwde")
 expand_icon = true
 
@@ -196,6 +253,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_8k2ub")
 icon = SubResource("AtlasTexture_ifb7r")
 expand_icon = true
 
@@ -211,6 +269,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_sys6w")
 icon = SubResource("AtlasTexture_r3cyp")
 expand_icon = true
 
@@ -221,6 +280,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_l5ktn")
 icon = ExtResource("6_40i15")
 expand_icon = true
 
@@ -231,6 +291,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_l0d6m")
 icon = SubResource("AtlasTexture_q1g0f")
 expand_icon = true
 
@@ -241,12 +302,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
 button_group = SubResource("ButtonGroup_xvr2r")
+shortcut = SubResource("Shortcut_a8hv4")
 icon = ExtResource("7_07l2c")
 expand_icon = true
 
 [node name="EndTurnButton" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
+shortcut = SubResource("Shortcut_435ub")
 text = "END TURN"
 
 [connection signal="pressed" from="PlayerUI/CenterContainer/VBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
