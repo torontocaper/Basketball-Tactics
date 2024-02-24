@@ -17,6 +17,7 @@ script = ExtResource("2_dljt0")
 modulate = Color(0, 0, 1, 1)
 position = Vector2(104, 80)
 character_name = "Blurb"
+movement_speed = 6
 
 [node name="Player2" parent="TurnManager/Players" instance=ExtResource("3_0eco0")]
 modulate = Color(1, 0.647059, 0, 1)

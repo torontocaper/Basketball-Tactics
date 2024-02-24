@@ -22,4 +22,3 @@ func _execute_round():
 	round_over.emit(round_number)
 	round_number += 1
 	_execute_round()
-

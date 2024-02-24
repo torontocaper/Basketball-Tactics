@@ -15,7 +15,7 @@ var tile_size := Vector2i(16, 16)
 var is_turn := false
 var movement_cost : float
 var movement_remaining = float(movement_speed)
-var movement_buttons_group : ButtonGroup
+var movement_button_group : ButtonGroup
 var movement_vector : Vector2i
 var button_name : String
 
@@ -24,12 +24,13 @@ signal turn_finished
 func _ready():
 	name_label.text = character_name.to_upper()
 	player_ui.visible = false
-	movement_buttons_group = movement_buttons_node.get_child(0).button_group
-	movement_buttons_group.pressed.connect(_on_movement_button_pressed)
+	movement_button_group = movement_buttons_node.get_child(0).button_group
+	movement_button_group.pressed.connect(_on_movement_button_pressed)
 
 func _execute_turn(player):
 	if player == self:
 		is_turn = true
+		movement_remaining = movement_speed
 		if player_camera.is_current() == false:
 			player_camera.make_current()
 		player_sprite.play("idle")
@@ -41,7 +42,6 @@ func _on_end_turn_button_pressed():
 	player_ui.visible = false
 	player_sprite.stop()
 	turn_finished.emit()
-	movement_remaining = movement_speed
 	is_turn = false
 
 func _on_movement_button_pressed(button):
@@ -62,28 +62,25 @@ func _on_movement_button_pressed(button):
 		movement_vector = (Vector2i.DOWN + Vector2i.LEFT) * tile_size
 	if button_name == "Down-Right":
 		movement_vector = (Vector2i.DOWN + Vector2i.RIGHT) * tile_size
-	
+
 	if movement_vector.length_squared() > tile_size.x * tile_size.y:
 		movement_cost = 1.5
 	else:
 		movement_cost = 1
-	
+
 	if movement_remaining >= movement_cost:
 		_move()
 		movement_remaining -= movement_cost
 	else:
 		print("not enough movement points left")
-		
+
 func _physics_process(_delta):
-	# set velocity to movement vector
 	velocity = movement_vector
-	# but only for as long as it takes to get to the destination, then stop
 	move_and_slide()
 
 func _move():
-	set_physics_process(true)
 	player_sprite.play("run")
+	set_physics_process(true)
 	await get_tree().create_timer(1.0).timeout
 	set_physics_process(false)
 	player_sprite.play("idle")
-	
