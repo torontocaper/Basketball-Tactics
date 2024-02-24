@@ -170,6 +170,9 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_beihu")
 
+[node name="PlayerBrain" type="Node" parent="."]
+script = ExtResource("8_yy7oi")
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 10
 position = Vector2(0, -7)
@@ -320,9 +323,5 @@ expand_icon = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
 shortcut = SubResource("Shortcut_435ub")
+shortcut_in_tooltip = false
 text = "END TURN"
-
-[node name="PlayerBrain" type="Node" parent="."]
-script = ExtResource("8_yy7oi")
-
-[connection signal="pressed" from="PlayerUI/CenterContainer/VBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

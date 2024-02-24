@@ -28,6 +28,7 @@ character_name = "Orang"
 modulate = Color(0.627451, 0.12549, 0.941176, 1)
 position = Vector2(-40, 40)
 character_name = "Purp"
+is_cpu = true
 
 [node name="Environment" type="Node" parent="."]
 

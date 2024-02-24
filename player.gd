@@ -8,6 +8,8 @@ class_name Player
 @onready var name_label := $PlayerUI/CenterContainer/VBoxContainer/NameLabel
 @onready var movement_buttons_node := $PlayerUI/CenterContainer/VBoxContainer/MovementButtons
 @onready var influence_area = $InfluenceArea
+@onready var end_turn_button = $PlayerUI/CenterContainer/VBoxContainer/EndTurnButton
+@onready var player_brain = $PlayerBrain
 
 @export var character_name : String = "Blorb"
 @export var movement_speed := 3
@@ -29,11 +31,11 @@ func _ready():
 	influence_area.body_exited.connect(_on_influence_area_exited)
 
 	if is_cpu:
-		# activate player brain
 		pass
 	else:
 		movement_button_group = movement_buttons_node.get_child(0).button_group
 		movement_button_group.pressed.connect(_on_movement_button_pressed)
+		end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 
 func _execute_turn(player):
 	if player == self:
@@ -42,8 +44,9 @@ func _execute_turn(player):
 		if player_camera.is_current() == false:
 			player_camera.make_current()
 		player_sprite.play("idle")
-		if is_cpu == false:
-			player_ui.visible = true
+		player_ui.visible = true
+		if is_cpu:
+			player_brain.activate()
 	else:
 		is_turn = false
 
