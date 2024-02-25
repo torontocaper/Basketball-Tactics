@@ -1,19 +1,21 @@
 extends CharacterBody2D
+## Base class for any player on the court, either user or cpu
 
 class_name Player
+
+@export var character_name : String = "Blorb" ## Literally the character's name. Try to make it something [b]alien[/b]
+@export_enum("Slow:3", "Average:6", "Fast:9") var movement_speed := 3 ## The number of movement points the player can expend in a turn
+@export var is_cpu : bool = false ## If set to true, player will be controlled by a script/ai
 
 @onready var player_camera := $PlayerCamera
 @onready var player_sprite := $PlayerSprite
 @onready var player_ui := $PlayerUI
 @onready var name_label := $PlayerUI/NameLabel
 @onready var movement_buttons_node := $PlayerUI/MovementButtons
-@onready var influence_area = $InfluenceArea
 @onready var end_turn_button = $PlayerUI/EndTurnButton
-@onready var player_brain = $PlayerBrain
 
-@export var character_name : String = "Blorb"
-@export var movement_speed := 3
-@export var is_cpu : bool = false
+@onready var influence_area = $InfluenceArea
+@onready var player_brain = $PlayerBrain
 
 var tile_size := Vector2i(16, 16)
 var is_turn := false
