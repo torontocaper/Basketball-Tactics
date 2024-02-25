@@ -5,10 +5,10 @@ class_name Player
 @onready var player_camera := $PlayerCamera
 @onready var player_sprite := $PlayerSprite
 @onready var player_ui := $PlayerUI
-@onready var name_label := $PlayerUI/CenterContainer/VBoxContainer/NameLabel
-@onready var movement_buttons_node := $PlayerUI/CenterContainer/VBoxContainer/MovementButtons
+@onready var name_label := $PlayerUI/NameLabel
+@onready var movement_buttons_node := $PlayerUI/MovementButtons
 @onready var influence_area = $InfluenceArea
-@onready var end_turn_button = $PlayerUI/CenterContainer/VBoxContainer/EndTurnButton
+@onready var end_turn_button = $PlayerUI/EndTurnButton
 @onready var player_brain = $PlayerBrain
 
 @export var character_name : String = "Blorb"
@@ -82,12 +82,12 @@ func _on_movement_button_pressed(button):
 		movement_cost = 1
 
 	if movement_remaining >= movement_cost:
-		_move(movement_vector)
+		move(movement_vector)
 		movement_remaining -= movement_cost
 	else:
 		print("not enough movement points left")
 
-func _move(movement_vector):
+func move(movement_vector):
 	player_ui.set_process_mode(Node.PROCESS_MODE_DISABLED)
 	player_sprite.play("run")
 	var tween = create_tween()

@@ -84,13 +84,6 @@ size = Vector2(14, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnp1e"]
 size = Vector2(48, 48)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uemq"]
-bg_color = Color(0.188235, 0.188235, 0.188235, 0.776471)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [sub_resource type="ButtonGroup" id="ButtonGroup_xvr2r"]
 resource_name = "Movement"
 
@@ -158,6 +151,9 @@ action = &"down-right"
 [sub_resource type="Shortcut" id="Shortcut_a8hv4"]
 events = [SubResource("InputEventAction_jlhsu")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uemq"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.776471)
+
 [sub_resource type="InputEventAction" id="InputEventAction_pmg1x"]
 action = &"ui_accept"
 
@@ -193,33 +189,25 @@ debug_color = Color(1, 0.752941, 0.796078, 0.419608)
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MovementButtons" type="GridContainer" parent="PlayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 23.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/CenterContainer"]
-layout_mode = 2
-
-[node name="NameLabel" type="Label" parent="PlayerUI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxFlat_8uemq")
-text = "Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MovementButtons" type="GridContainer" parent="PlayerUI/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(16, 24)
-layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="Up-Left" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Up-Left" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -230,8 +218,8 @@ shortcut_in_tooltip = false
 icon = ExtResource("3_5fqpb")
 expand_icon = true
 
-[node name="Up" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Up" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -242,8 +230,8 @@ shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_lytlw")
 expand_icon = true
 
-[node name="Up-Right" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Up-Right" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -254,8 +242,8 @@ shortcut_in_tooltip = false
 icon = ExtResource("5_ynwde")
 expand_icon = true
 
-[node name="Left" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Left" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -266,13 +254,13 @@ shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_ifb7r")
 expand_icon = true
 
-[node name="Filler" type="Control" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(24, 24)
+[node name="Filler" type="Control" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Right" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Right" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -283,8 +271,8 @@ shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_r3cyp")
 expand_icon = true
 
-[node name="Down-Left" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Down-Left" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -295,8 +283,8 @@ shortcut_in_tooltip = false
 icon = ExtResource("6_40i15")
 expand_icon = true
 
-[node name="Down" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Down" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -307,8 +295,8 @@ shortcut_in_tooltip = false
 icon = SubResource("AtlasTexture_q1g0f")
 expand_icon = true
 
-[node name="Down-Right" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer/MovementButtons"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Down-Right" type="Button" parent="PlayerUI/MovementButtons"]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -319,9 +307,38 @@ shortcut_in_tooltip = false
 icon = ExtResource("7_07l2c")
 expand_icon = true
 
-[node name="EndTurnButton" type="Button" parent="PlayerUI/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
+[node name="NameLabel" type="Label" parent="PlayerUI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 9.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_8uemq")
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="PlayerUI"]
+anchors_preset = -1
+offset_left = 105.0
+offset_top = 137.0
+offset_right = 151.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 6
 shortcut = SubResource("Shortcut_435ub")
 shortcut_in_tooltip = false
 text = "END TURN"
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
