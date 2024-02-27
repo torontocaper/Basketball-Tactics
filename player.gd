@@ -1,10 +1,12 @@
 extends CharacterBody2D
 ## Base class for any player on the court, either user or cpu
+##
+## The Player class represents a 'player' in the sense of an athlete on the court -- not necessarily a user. 
 
 class_name Player
 
 @export var character_name : String = "Blorb" ## Literally the character's name. Try to make it something [b]alien[/b]
-@export_enum("Slow:3", "Average:6", "Fast:9") var movement_speed := 3 ## The number of movement points the player can expend in a turn
+@export_enum("Slow:3", "Average:6", "Fast:9") var movement_speed := 3 ## The number of movement points the player can expend in a turn. Horizontal and vertical moves cost 1 point; diagonal moves cost 1.5
 @export var is_cpu : bool = false ## If set to true, player will be controlled by a script/ai
 
 @onready var player_camera := $PlayerCamera
@@ -13,7 +15,6 @@ class_name Player
 @onready var name_label := $PlayerUI/NameLabel
 @onready var movement_buttons_node := $PlayerUI/MovementButtons
 @onready var end_turn_button = $PlayerUI/EndTurnButton
-
 @onready var influence_area = $InfluenceArea
 @onready var player_brain = $PlayerBrain
 
@@ -34,6 +35,7 @@ func _ready():
 
 	if is_cpu:
 		pass
+		## TODO write some actual code
 	else:
 		movement_button_group = movement_buttons_node.get_child(0).button_group
 		movement_button_group.pressed.connect(_on_movement_button_pressed)
@@ -89,7 +91,7 @@ func _on_movement_button_pressed(button):
 	else:
 		print("not enough movement points left")
 
-func move(movement_vector):
+func move(movement_vector:Vector2i): ## Moves the player by the given movement vector
 	player_ui.set_process_mode(Node.PROCESS_MODE_DISABLED)
 	player_sprite.play("run")
 	var tween = create_tween()
