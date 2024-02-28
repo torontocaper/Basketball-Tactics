@@ -15,8 +15,6 @@ texture = ExtResource("1_p7cs2")
 0:0/3/modulate = Color(1, 1, 0, 1)
 
 [sub_resource type="TileSet" id="TileSet_61tpo"]
-custom_data_layer_0/name = "tile_name"
-custom_data_layer_0/type = 4
 sources/1 = SubResource("TileSetAtlasSource_hmo7s")
 
 [node name="Court" type="TileMap"]
