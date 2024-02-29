@@ -20,6 +20,6 @@ func _print_locations():
 		var map_position = Vector2(court.local_to_map(player.position))
 		var distance_to_origin = map_position.distance_to(Vector2.ZERO)
 		print(player.character_name + " is at " + str(player.position) + ", which is " + str(map_position) + " in map space.")
-		print("That's approximately " + str(round(distance_to_origin)) + " away from the origin.")
+		print("(That's approximately " + str(round(distance_to_origin)) + " away from the origin.)")
 		
 		
