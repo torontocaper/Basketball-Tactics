@@ -15,18 +15,16 @@ func _ready():
 
 	var max_distance = distances_squared.max()
 	ratios = distances_squared.map(func(number): return number/max_distance)
-
-	#for i in len(cells):
-		#print(str(i) + " " + str(cells[i]) + " " + str(distances_squared[i]) + " " + str(ratios[i]))
-		#_cell = cells[i]
-		#_ratio = ratios[i]
+	
 	queue_redraw()
-		#await get_tree().create_timer(0.1).timeout
-
+	
+	
 func _draw():
 	for i in len(cells):
 		print(str(i) + " " + str(cells[i]) + " " + " " + str(ratios[i]))
 		_cell = cells[i]
 		_ratio = ratios[i]
-		print("drawing a circle at " + str(map_to_local(_cell)))
-		draw_circle(map_to_local(_cell), 10, Color.WHITE.darkened(_ratio))
+		var position_of_rect = map_to_local(_cell) - Vector2(8, 8)
+		print("drawing a rect at " + str(position_of_rect))
+		draw_rect(Rect2(position_of_rect, Vector2(16, 16)), Color.WHITE.darkened(_ratio))
+		
