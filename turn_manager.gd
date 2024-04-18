@@ -14,7 +14,7 @@ func _ready():
 	_execute_round()
 
 func _execute_round():
-	print("it's round " + str(round_number))
+	print("IT'S ROUND " + str(round_number))
 	for player in players:
 		print("sending 'your turn' signal to " + player.character_name)
 		your_turn.emit(player)
