@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dkqg27dvam7ky"]
+[gd_scene load_steps=45 format=3 uid="uid://dkqg27dvam7ky"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_beihu"]
 [ext_resource type="Texture2D" uid="uid://cala77ckbtbry" path="res://assets/sprites/alien-1.png" id="1_gevm3"]
@@ -153,6 +153,13 @@ events = [SubResource("InputEventAction_jlhsu")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uemq"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 0.776471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csnkm"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.776471)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="InputEventAction" id="InputEventAction_pmg1x"]
 action = &"ui_accept"
@@ -316,6 +323,20 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_8uemq")
 text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovesRemainingLabel" type="Label" parent="PlayerUI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 89.0
+offset_top = 41.0
+offset_right = -89.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_csnkm")
+text = "Moves Remaining: "
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -17,6 +17,7 @@ class_name Player
 @onready var end_turn_button = $PlayerUI/EndTurnButton
 @onready var influence_area = $InfluenceArea
 @onready var player_brain = $PlayerBrain
+@onready var moves_remaining_label = $PlayerUI/MovesRemainingLabel
 
 var tile_size := Vector2i(16, 16)
 var is_turn := false
@@ -48,6 +49,7 @@ func _execute_turn(player):
 		if player_camera.is_current() == false:
 			player_camera.make_current()
 		player_sprite.play("idle")
+		moves_remaining_label.text = "Moves Remaining: " + str(movement_remaining)
 		player_ui.visible = true
 		if is_cpu:
 			player_brain.activate()
@@ -90,6 +92,8 @@ func _on_movement_button_pressed(button):
 		movement_remaining -= movement_cost
 	else:
 		print("not enough movement points left")
+	
+	moves_remaining_label.text = "Moves Remaining: " + str(movement_remaining)
 
 func move(movement_vector:Vector2i): ## Moves the player by the given movement vector
 	player_ui.set_process_mode(Node.PROCESS_MODE_DISABLED)
