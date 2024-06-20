@@ -14,7 +14,7 @@ texture = ExtResource("1_p7cs2")
 0:0/3 = 3
 0:0/3/modulate = Color(1, 1, 0, 1)
 0:0/4 = 4
-0:0/4/modulate = Color(1, 1, 1, 0)
+0:0/4/z_index = -1
 
 [sub_resource type="TileSet" id="TileSet_61tpo"]
 sources/1 = SubResource("TileSetAtlasSource_hmo7s")
